@@ -1,4 +1,4 @@
-package com.sachinda.myfirstapp.tictactoe;
+package com.sachinda.tictactoe.tictactoe;
 
 import org.junit.Test;
 
