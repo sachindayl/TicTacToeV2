@@ -1,4 +1,4 @@
-package com.sachinda.myfirstapp;
+package com.sachinda.v2.tictactoe;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -15,8 +15,9 @@ import android.view.animation.Animation.AnimationListener;
 import android.widget.Button;
 import android.widget.ImageView;
 
-public class OnePlayerActivity5 extends Activity implements
-        View.OnClickListener {
+import java.util.Random;
+
+public class OnePlayerActivity extends Activity implements View.OnClickListener {
     // buttons
     Button one, two, three, four, five, six, seven, eight, nine;
 
@@ -63,6 +64,7 @@ public class OnePlayerActivity5 extends Activity implements
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+
         int style = ((GlobalVariable) this.getApplication()).getStyle();
         if (style == 1) {
             setContentView(R.layout.activity_one_player);
@@ -70,15 +72,15 @@ public class OnePlayerActivity5 extends Activity implements
             setContentView(R.layout.activity_one_player_activity2);
         }
 
-        nextGame = new Intent(OnePlayerActivity5.this, OnePlayerActivity6.class);
-        end = new Intent(OnePlayerActivity5.this, BoardType.class);
+        nextGame = new Intent(OnePlayerActivity.this, OnePlayerActivity2.class);
+        end = new Intent(OnePlayerActivity.this, BoardType.class);
 
-        // Context context = getApplicationContext();
-        // CharSequence text = "Activity 5";
-        // int duration = Toast.LENGTH_SHORT;
-        //
-        // Toast toast = Toast.makeText(context, text, duration);
-        // toast.show();
+//		Context context = getApplicationContext();
+//		CharSequence text = "Activity 1";
+//		int duration = Toast.LENGTH_SHORT;
+//
+//		Toast toast = Toast.makeText(context, text, duration);
+//		toast.show();
 
         counter = 0;
 
@@ -128,10 +130,10 @@ public class OnePlayerActivity5 extends Activity implements
             public void run() {
                 try {
                     Thread.sleep(1500);
-                    OnePlayerActivity5.this.runOnUiThread(new Runnable() {
+                    OnePlayerActivity.this.runOnUiThread(new Runnable() {
                         public void run() {
                             alert = new AlertDialog.Builder(
-                                    OnePlayerActivity5.this);
+                                    OnePlayerActivity.this);
                             alert.setMessage("Do you want to start a new game?")
                                     .setCancelable(false)
                                     .setPositiveButton(
@@ -1535,7 +1537,7 @@ public class OnePlayerActivity5 extends Activity implements
                             @Override
                             public void onClick(DialogInterface dialog,
                                                 int which) {
-                                OnePlayerActivity5.this.finish();
+                                OnePlayerActivity.this.finish();
                                 startActivity(end);
                             }
                         }).setNegativeButton("No", null).show();
@@ -1695,6 +1697,7 @@ public class OnePlayerActivity5 extends Activity implements
 
     }
 
+    //disabling all buttons after a win or a draw
     public void disableAllButtons() {
         one.setEnabled(false);
         two.setEnabled(false);
@@ -1707,59 +1710,45 @@ public class OnePlayerActivity5 extends Activity implements
         nine.setEnabled(false);
     }
 
+    //computers moves
     private void computerMove() {
 
         Thread delaying = new Thread() {
             public void run() {
                 try {
                     Thread.sleep(250);
-                    OnePlayerActivity5.this.runOnUiThread(new Runnable() {
+                    OnePlayerActivity.this.runOnUiThread(new Runnable() {
                         public void run() {
-                            // one is clicked
                             if (oneOne && one.isEnabled()) {
                                 if (twoFour && twoFive && six.isEnabled()) {
                                     six.performClick();
-                                } else if (twoFive && twoSix
-                                        && four.isEnabled()) {
+                                } else if (twoFive && twoSix && four.isEnabled()) {
                                     four.performClick();
-                                } else if (twoFour && twoSix
-                                        && five.isEnabled()) {
+                                } else if (twoFour && twoSix && five.isEnabled()) {
                                     five.performClick();
-                                } else if (twoSeven && twoEight
-                                        && nine.isEnabled()) {
+                                } else if (twoSeven && twoEight && nine.isEnabled()) {
                                     nine.performClick();
-                                } else if (twoEight && twoNine
-                                        && seven.isEnabled()) {
+                                } else if (twoEight && twoNine && seven.isEnabled()) {
                                     seven.performClick();
-                                } else if (twoSeven && twoNine
-                                        && eight.isEnabled()) {
+                                } else if (twoSeven && twoNine && eight.isEnabled()) {
                                     eight.performClick();
-                                } else if (twoTwo && twoFive
-                                        && eight.isEnabled()) {
+                                } else if (twoTwo && twoFive && eight.isEnabled()) {
                                     eight.performClick();
-                                } else if (twoTwo && twoEight
-                                        && five.isEnabled()) {
+                                } else if (twoTwo && twoEight && five.isEnabled()) {
                                     five.performClick();
-                                } else if (twoFive && twoEight
-                                        && two.isEnabled()) {
+                                } else if (twoFive && twoEight && two.isEnabled()) {
                                     two.performClick();
-                                } else if (twoThree && twoSix
-                                        && nine.isEnabled()) {
+                                } else if (twoThree && twoSix && nine.isEnabled()) {
                                     nine.performClick();
-                                } else if (twoThree && twoNine
-                                        && six.isEnabled()) {
+                                } else if (twoThree && twoNine && six.isEnabled()) {
                                     six.performClick();
-                                } else if (twoSix && twoNine
-                                        && three.isEnabled()) {
+                                } else if (twoSix && twoNine && three.isEnabled()) {
                                     three.performClick();
-                                } else if (twoThree && twoFive
-                                        && seven.isEnabled()) {
+                                } else if (twoThree && twoFive && seven.isEnabled()) {
                                     seven.performClick();
-                                } else if (twoThree && twoSeven
-                                        && five.isEnabled()) {
+                                } else if (twoThree && twoSeven && five.isEnabled()) {
                                     five.performClick();
-                                } else if (twoFive && twoSeven
-                                        && three.isEnabled()) {
+                                } else if (twoFive && twoSeven && three.isEnabled()) {
                                     three.performClick();
                                 } else if (oneTwo && three.isEnabled()) {
                                     three.performClick();
@@ -1774,7 +1763,9 @@ public class OnePlayerActivity5 extends Activity implements
                                 } else if (oneSeven && four.isEnabled()) {
                                     four.performClick();
                                 } else {
-                                    if (five.isEnabled()) {
+                                    if (nine.isEnabled()) {
+                                        nine.performClick();
+                                    } else if (five.isEnabled()) {
                                         five.performClick();
                                     } else if (eight.isEnabled()) {
                                         eight.performClick();
@@ -1784,60 +1775,42 @@ public class OnePlayerActivity5 extends Activity implements
                                 }
                                 one.setEnabled(false);
                             }
-                            // two is clicked
                             if (oneTwo && two.isEnabled()) {
                                 if (twoOne && twoFour && seven.isEnabled()) {
                                     seven.performClick();
-                                } else if (twoOne && twoSeven
-                                        && four.isEnabled()) {
+                                } else if (twoOne && twoSeven && four.isEnabled()) {
                                     four.performClick();
-                                } else if (twoFour && twoSeven
-                                        && one.isEnabled()) {
+                                } else if (twoFour && twoSeven && one.isEnabled()) {
                                     one.performClick();
-                                } else if (twoThree && twoSix
-                                        && nine.isEnabled()) {
+                                } else if (twoThree && twoSix && nine.isEnabled()) {
                                     nine.performClick();
-                                } else if (twoThree && twoNine
-                                        && six.isEnabled()) {
+                                } else if (twoThree && twoNine && six.isEnabled()) {
                                     six.performClick();
-                                } else if (twoSix && twoNine
-                                        && three.isEnabled()) {
+                                } else if (twoSix && twoNine && three.isEnabled()) {
                                     three.performClick();
-                                } else if (twoOne && twoFive
-                                        && nine.isEnabled()) {
+                                } else if (twoOne && twoFive && nine.isEnabled()) {
                                     nine.performClick();
-                                } else if (twoOne && twoNine
-                                        && five.isEnabled()) {
+                                } else if (twoOne && twoNine && five.isEnabled()) {
                                     five.performClick();
-                                } else if (twoFive && twoNine
-                                        && one.isEnabled()) {
+                                } else if (twoFive && twoNine && one.isEnabled()) {
                                     one.performClick();
-                                } else if (twoThree && twoFive
-                                        && seven.isEnabled()) {
+                                } else if (twoThree && twoFive && seven.isEnabled()) {
                                     seven.performClick();
-                                } else if (twoThree && twoSeven
-                                        && five.isEnabled()) {
+                                } else if (twoThree && twoSeven && five.isEnabled()) {
                                     five.performClick();
-                                } else if (twoFive && twoSeven
-                                        && three.isEnabled()) {
+                                } else if (twoFive && twoSeven && three.isEnabled()) {
                                     three.performClick();
-                                } else if (twoFour && twoFive
-                                        && six.isEnabled()) {
+                                } else if (twoFour && twoFive && six.isEnabled()) {
                                     six.performClick();
-                                } else if (twoFour && twoSix
-                                        && five.isEnabled()) {
+                                } else if (twoFour && twoSix && five.isEnabled()) {
                                     five.performClick();
-                                } else if (twoFive && twoSix
-                                        && four.isEnabled()) {
+                                } else if (twoFive && twoSix && four.isEnabled()) {
                                     four.performClick();
-                                } else if (twoSeven && twoEight
-                                        && nine.isEnabled()) {
+                                } else if (twoSeven && twoEight && nine.isEnabled()) {
                                     nine.performClick();
-                                } else if (twoSeven && twoNine
-                                        && eight.isEnabled()) {
+                                } else if (twoSeven && twoNine && eight.isEnabled()) {
                                     eight.performClick();
-                                } else if (twoEight && twoNine
-                                        && seven.isEnabled()) {
+                                } else if (twoEight && twoNine && seven.isEnabled()) {
                                     seven.performClick();
                                 } else if (oneOne && three.isEnabled()) {
                                     three.performClick();
@@ -1862,52 +1835,39 @@ public class OnePlayerActivity5 extends Activity implements
                                 }
                                 two.setEnabled(false);
                             }
-                            // three is clicked
+
                             if (oneThree && three.isEnabled()) {
                                 if (twoOne && twoFour && seven.isEnabled()) {
                                     seven.performClick();
-                                } else if (twoOne && twoSeven
-                                        && four.isEnabled()) {
+                                } else if (twoOne && twoSeven && four.isEnabled()) {
                                     four.performClick();
-                                } else if (twoFour && twoSeven
-                                        && one.isEnabled()) {
+                                } else if (twoFour && twoSeven && one.isEnabled()) {
                                     one.performClick();
-                                } else if (twoTwo && twoFive
-                                        && eight.isEnabled()) {
+                                } else if (twoTwo && twoFive && eight.isEnabled()) {
                                     eight.performClick();
-                                } else if (twoTwo && twoEight
-                                        && five.isEnabled()) {
+                                } else if (twoTwo && twoEight && five.isEnabled()) {
                                     five.performClick();
-                                } else if (twoFive && twoEight
-                                        && two.isEnabled()) {
+                                } else if (twoFive && twoEight && two.isEnabled()) {
                                     two.performClick();
-                                } else if (twoOne && twoFive
-                                        && nine.isEnabled()) {
+                                } else if (twoOne && twoFive && nine.isEnabled()) {
                                     nine.performClick();
-                                } else if (twoOne && twoNine
-                                        && five.isEnabled()) {
+                                } else if (twoOne && twoNine && five.isEnabled()) {
                                     five.performClick();
-                                } else if (twoFive && twoNine
-                                        && one.isEnabled()) {
+                                } else if (twoFive && twoNine && one.isEnabled()) {
                                     one.performClick();
                                 }
-                                // 4 5 6
+                                //4 5 6
                                 else if (twoFour && twoFive && six.isEnabled()) {
                                     six.performClick();
-                                } else if (twoFour && twoSix
-                                        && five.isEnabled()) {
+                                } else if (twoFour && twoSix && five.isEnabled()) {
                                     five.performClick();
-                                } else if (twoFive && twoSix
-                                        && four.isEnabled()) {
+                                } else if (twoFive && twoSix && four.isEnabled()) {
                                     four.performClick();
-                                } else if (twoSeven && twoEight
-                                        && nine.isEnabled()) {
+                                } else if (twoSeven && twoEight && nine.isEnabled()) {
                                     nine.performClick();
-                                } else if (twoSeven && twoNine
-                                        && eight.isEnabled()) {
+                                } else if (twoSeven && twoNine && eight.isEnabled()) {
                                     eight.performClick();
-                                } else if (twoEight && twoNine
-                                        && seven.isEnabled()) {
+                                } else if (twoEight && twoNine && seven.isEnabled()) {
                                     seven.performClick();
                                 } else if (oneOne && two.isEnabled()) {
                                     two.performClick();
@@ -1922,9 +1882,11 @@ public class OnePlayerActivity5 extends Activity implements
                                 } else if (oneSeven && five.isEnabled()) {
                                     five.performClick();
                                 } else {
-                                    if (five.isEnabled()) {
+                                    if (seven.isEnabled())
+                                        seven.performClick();
+                                    else if (five.isEnabled())
                                         five.performClick();
-                                    } else if (eight.isEnabled()) {
+                                    else if (eight.isEnabled()) {
                                         eight.performClick();
                                     } else if (four.isEnabled()) {
                                         four.performClick();
@@ -1934,68 +1896,54 @@ public class OnePlayerActivity5 extends Activity implements
                                 three.setEnabled(false);
 
                             }
-                            // four is clicked and is Enabled
+                            //four is clicked and is Enabled
                             if (oneFour && four.isEnabled()) {
-                                // 1 2 3
+                                //1 2 3
                                 if (twoOne && twoTwo && three.isEnabled()) {
                                     three.performClick();
-                                } else if (twoOne && twoThree
-                                        && two.isEnabled()) {
+                                } else if (twoOne && twoThree && two.isEnabled()) {
                                     two.performClick();
-                                } else if (twoTwo && twoThree
-                                        && one.isEnabled()) {
+                                } else if (twoTwo && twoThree && one.isEnabled()) {
                                     one.performClick();
                                 }
                                 // 3 6 9
                                 else if (twoThree && twoSix && nine.isEnabled()) {
                                     nine.performClick();
-                                } else if (twoThree && twoNine
-                                        && six.isEnabled()) {
+                                } else if (twoThree && twoNine && six.isEnabled()) {
                                     six.performClick();
-                                } else if (twoSix && twoNine
-                                        && three.isEnabled()) {
+                                } else if (twoSix && twoNine && three.isEnabled()) {
                                     three.performClick();
                                 }
                                 // 1 5 9
                                 else if (twoOne && twoFive && nine.isEnabled()) {
                                     nine.performClick();
-                                } else if (twoOne && twoNine
-                                        && five.isEnabled()) {
+                                } else if (twoOne && twoNine && five.isEnabled()) {
                                     five.performClick();
-                                } else if (twoFive && twoNine
-                                        && one.isEnabled()) {
+                                } else if (twoFive && twoNine && one.isEnabled()) {
                                     one.performClick();
                                 }
-                                // 3 5 7
-                                else if (twoThree && twoFive
-                                        && seven.isEnabled()) {
+                                //3 5 7
+                                else if (twoThree && twoFive && seven.isEnabled()) {
                                     seven.performClick();
-                                } else if (twoThree && twoSeven
-                                        && five.isEnabled()) {
+                                } else if (twoThree && twoSeven && five.isEnabled()) {
                                     five.performClick();
-                                } else if (twoFive && twoSeven
-                                        && three.isEnabled()) {
+                                } else if (twoFive && twoSeven && three.isEnabled()) {
                                     three.performClick();
                                 }
-                                // 2 5 8
+                                //2 5 8
                                 else if (twoTwo && twoFive && eight.isEnabled()) {
                                     eight.performClick();
-                                } else if (twoTwo && twoEight
-                                        && five.isEnabled()) {
+                                } else if (twoTwo && twoEight && five.isEnabled()) {
                                     five.performClick();
-                                } else if (twoFive && twoEight
-                                        && two.isEnabled()) {
+                                } else if (twoFive && twoEight && two.isEnabled()) {
                                     two.performClick();
                                 }
-                                // 7 8 9
-                                else if (twoSeven && twoEight
-                                        && nine.isEnabled()) {
+                                //7 8 9
+                                else if (twoSeven && twoEight && nine.isEnabled()) {
                                     nine.performClick();
-                                } else if (twoSeven && twoNine
-                                        && eight.isEnabled()) {
+                                } else if (twoSeven && twoNine && eight.isEnabled()) {
                                     eight.performClick();
-                                } else if (twoEight && twoNine
-                                        && seven.isEnabled()) {
+                                } else if (twoEight && twoNine && seven.isEnabled()) {
                                     seven.performClick();
                                 } else if (oneFive && six.isEnabled())
                                     six.performClick();
@@ -2020,51 +1968,40 @@ public class OnePlayerActivity5 extends Activity implements
 
                                 four.setEnabled(false);
                             }
-                            // five is clicked and enabled
+                            //five is clicked and enabled
                             if (oneFive && five.isEnabled()) {
-                                // 1 2 3
+                                //1 2 3
                                 if (twoOne && twoTwo && three.isEnabled()) {
                                     three.performClick();
-                                } else if (twoOne && twoThree
-                                        && two.isEnabled()) {
+                                } else if (twoOne && twoThree && two.isEnabled()) {
                                     two.performClick();
-                                } else if (twoTwo && twoThree
-                                        && one.isEnabled()) {
+                                } else if (twoTwo && twoThree && one.isEnabled()) {
                                     one.performClick();
                                 }
                                 // 3 6 9
                                 else if (twoThree && twoSix && nine.isEnabled()) {
                                     nine.performClick();
-                                } else if (twoThree && twoNine
-                                        && six.isEnabled()) {
+                                } else if (twoThree && twoNine && six.isEnabled()) {
                                     six.performClick();
-                                } else if (twoSix && twoNine
-                                        && three.isEnabled()) {
+                                } else if (twoSix && twoNine && three.isEnabled()) {
                                     three.performClick();
                                 }
                                 // 1 4 7
                                 else if (twoOne && twoFour && seven.isEnabled()) {
                                     seven.performClick();
-                                } else if (twoOne && twoSeven
-                                        && four.isEnabled()) {
+                                } else if (twoOne && twoSeven && four.isEnabled()) {
                                     four.performClick();
-                                } else if (twoFour && twoSeven
-                                        && one.isEnabled()) {
+                                } else if (twoFour && twoSeven && one.isEnabled()) {
                                     one.performClick();
                                 }
-                                // 7 8 9
-                                else if (twoSeven && twoEight
-                                        && nine.isEnabled()) {
+                                //7 8 9
+                                else if (twoSeven && twoEight && nine.isEnabled()) {
                                     nine.performClick();
-                                } else if (twoSeven && twoNine
-                                        && eight.isEnabled()) {
+                                } else if (twoSeven && twoNine && eight.isEnabled()) {
                                     eight.performClick();
-                                } else if (twoEight && twoNine
-                                        && seven.isEnabled()) {
+                                } else if (twoEight && twoNine && seven.isEnabled()) {
                                     seven.performClick();
-                                }
-                                // blocking
-                                else if (oneFour && six.isEnabled())
+                                } else if (oneFour && six.isEnabled())
                                     six.performClick();
                                 else if (oneSix && four.isEnabled())
                                     four.performClick();
@@ -2095,68 +2032,54 @@ public class OnePlayerActivity5 extends Activity implements
 
                                 five.setEnabled(false);
                             }
-                            // six is clicked
+                            //six is clicked
                             if (oneSix && six.isEnabled()) {
-                                // 1 2 3
+                                //1 2 3
                                 if (twoOne && twoTwo && three.isEnabled()) {
                                     three.performClick();
-                                } else if (twoOne && twoThree
-                                        && two.isEnabled()) {
+                                } else if (twoOne && twoThree && two.isEnabled()) {
                                     two.performClick();
-                                } else if (twoTwo && twoThree
-                                        && one.isEnabled()) {
+                                } else if (twoTwo && twoThree && one.isEnabled()) {
                                     one.performClick();
                                 }
                                 // 1 4 7
                                 else if (twoOne && twoFour && seven.isEnabled()) {
                                     seven.performClick();
-                                } else if (twoOne && twoSeven
-                                        && four.isEnabled()) {
+                                } else if (twoOne && twoSeven && four.isEnabled()) {
                                     four.performClick();
-                                } else if (twoFour && twoSeven
-                                        && one.isEnabled()) {
+                                } else if (twoFour && twoSeven && one.isEnabled()) {
                                     one.performClick();
                                 }
                                 // 1 5 9
                                 else if (twoOne && twoFive && nine.isEnabled()) {
                                     nine.performClick();
-                                } else if (twoOne && twoNine
-                                        && five.isEnabled()) {
+                                } else if (twoOne && twoNine && five.isEnabled()) {
                                     five.performClick();
-                                } else if (twoFive && twoNine
-                                        && one.isEnabled()) {
+                                } else if (twoFive && twoNine && one.isEnabled()) {
                                     one.performClick();
                                 }
-                                // 3 5 7
-                                else if (twoThree && twoFive
-                                        && seven.isEnabled()) {
+                                //3 5 7
+                                else if (twoThree && twoFive && seven.isEnabled()) {
                                     seven.performClick();
-                                } else if (twoThree && twoSeven
-                                        && five.isEnabled()) {
+                                } else if (twoThree && twoSeven && five.isEnabled()) {
                                     five.performClick();
-                                } else if (twoFive && twoSeven
-                                        && three.isEnabled()) {
+                                } else if (twoFive && twoSeven && three.isEnabled()) {
                                     three.performClick();
                                 }
-                                // 2 5 8
+                                //2 5 8
                                 else if (twoTwo && twoFive && eight.isEnabled()) {
                                     eight.performClick();
-                                } else if (twoTwo && twoEight
-                                        && five.isEnabled()) {
+                                } else if (twoTwo && twoEight && five.isEnabled()) {
                                     five.performClick();
-                                } else if (twoFive && twoEight
-                                        && two.isEnabled()) {
+                                } else if (twoFive && twoEight && two.isEnabled()) {
                                     two.performClick();
                                 }
-                                // 7 8 9
-                                else if (twoSeven && twoEight
-                                        && nine.isEnabled()) {
+                                //7 8 9
+                                else if (twoSeven && twoEight && nine.isEnabled()) {
                                     nine.performClick();
-                                } else if (twoSeven && twoNine
-                                        && eight.isEnabled()) {
+                                } else if (twoSeven && twoNine && eight.isEnabled()) {
                                     eight.performClick();
-                                } else if (twoEight && twoNine
-                                        && seven.isEnabled()) {
+                                } else if (twoEight && twoNine && seven.isEnabled()) {
                                     seven.performClick();
                                 } else if (oneFour && five.isEnabled())
                                     five.performClick();
@@ -2179,56 +2102,46 @@ public class OnePlayerActivity5 extends Activity implements
 
                                 six.setEnabled(false);
                             }
-                            // seven is clicked
+                            //seven is clicked
                             if (oneSeven && seven.isEnabled()) {
-                                // 1 2 3
+                                //1 2 3
                                 if (twoOne && twoTwo && three.isEnabled()) {
                                     three.performClick();
-                                } else if (twoOne && twoThree
-                                        && two.isEnabled()) {
+                                } else if (twoOne && twoThree && two.isEnabled()) {
                                     two.performClick();
-                                } else if (twoTwo && twoThree
-                                        && one.isEnabled()) {
+                                } else if (twoTwo && twoThree && one.isEnabled()) {
                                     one.performClick();
                                 }
                                 // 3 6 9
                                 else if (twoThree && twoSix && nine.isEnabled()) {
                                     nine.performClick();
-                                } else if (twoThree && twoNine
-                                        && six.isEnabled()) {
+                                } else if (twoThree && twoNine && six.isEnabled()) {
                                     six.performClick();
-                                } else if (twoSix && twoNine
-                                        && three.isEnabled()) {
+                                } else if (twoSix && twoNine && three.isEnabled()) {
                                     three.performClick();
                                 }
                                 // 1 5 9
                                 else if (twoOne && twoFive && nine.isEnabled()) {
                                     nine.performClick();
-                                } else if (twoOne && twoNine
-                                        && five.isEnabled()) {
+                                } else if (twoOne && twoNine && five.isEnabled()) {
                                     five.performClick();
-                                } else if (twoFive && twoNine
-                                        && one.isEnabled()) {
+                                } else if (twoFive && twoNine && one.isEnabled()) {
                                     one.performClick();
                                 }
-                                // 4 5 6
+                                //4 5 6
                                 else if (twoFour && twoFive && six.isEnabled()) {
                                     six.performClick();
-                                } else if (twoFour && twoSix
-                                        && five.isEnabled()) {
+                                } else if (twoFour && twoSix && five.isEnabled()) {
                                     five.performClick();
-                                } else if (twoFive && twoSix
-                                        && four.isEnabled()) {
+                                } else if (twoFive && twoSix && four.isEnabled()) {
                                     four.performClick();
                                 }
-                                // 2 5 8
+                                //2 5 8
                                 else if (twoTwo && twoFive && eight.isEnabled()) {
                                     eight.performClick();
-                                } else if (twoTwo && twoEight
-                                        && five.isEnabled()) {
+                                } else if (twoTwo && twoEight && five.isEnabled()) {
                                     five.performClick();
-                                } else if (twoFive && twoEight
-                                        && two.isEnabled()) {
+                                } else if (twoFive && twoEight && two.isEnabled()) {
                                     two.performClick();
                                 } else if (oneOne && four.isEnabled())
                                     four.performClick();
@@ -2243,9 +2156,7 @@ public class OnePlayerActivity5 extends Activity implements
                                 else if (oneNine && eight.isEnabled())
                                     eight.performClick();
                                 else {
-                                    if (three.isEnabled())
-                                        three.performClick();
-                                    else if (five.isEnabled())
+                                    if (five.isEnabled())
                                         five.performClick();
                                     else if (six.isEnabled())
                                         six.performClick();
@@ -2255,67 +2166,54 @@ public class OnePlayerActivity5 extends Activity implements
 
                                 seven.setEnabled(false);
                             }
-                            // eight clicked
+                            //eight clicked
                             if (oneEight && eight.isEnabled()) {
-                                // 1 2 3
+                                //1 2 3
                                 if (twoOne && twoTwo && three.isEnabled()) {
                                     three.performClick();
-                                } else if (twoOne && twoThree
-                                        && two.isEnabled()) {
+                                } else if (twoOne && twoThree && two.isEnabled()) {
                                     two.performClick();
-                                } else if (twoTwo && twoThree
-                                        && one.isEnabled()) {
+                                } else if (twoTwo && twoThree && one.isEnabled()) {
                                     one.performClick();
                                 }
                                 // 1 4 7
                                 else if (twoOne && twoFour && seven.isEnabled()) {
                                     seven.performClick();
-                                } else if (twoOne && twoSeven
-                                        && four.isEnabled()) {
+                                } else if (twoOne && twoSeven && four.isEnabled()) {
                                     four.performClick();
-                                } else if (twoFour && twoSeven
-                                        && one.isEnabled()) {
+                                } else if (twoFour && twoSeven && one.isEnabled()) {
                                     one.performClick();
                                 }
                                 // 3 6 9
                                 else if (twoThree && twoSix && nine.isEnabled()) {
                                     nine.performClick();
-                                } else if (twoThree && twoNine
-                                        && six.isEnabled()) {
+                                } else if (twoThree && twoNine && six.isEnabled()) {
                                     six.performClick();
-                                } else if (twoSix && twoNine
-                                        && three.isEnabled()) {
+                                } else if (twoSix && twoNine && three.isEnabled()) {
                                     three.performClick();
                                 }
-                                // 4 5 6
+                                //4 5 6
                                 else if (twoFour && twoFive && six.isEnabled()) {
                                     six.performClick();
-                                } else if (twoFour && twoSix
-                                        && five.isEnabled()) {
+                                } else if (twoFour && twoSix && five.isEnabled()) {
                                     five.performClick();
-                                } else if (twoFive && twoSix
-                                        && four.isEnabled()) {
+                                } else if (twoFive && twoSix && four.isEnabled()) {
                                     four.performClick();
                                 }
                                 // 1 5 9
                                 else if (twoOne && twoFive && nine.isEnabled()) {
                                     nine.performClick();
-                                } else if (twoOne && twoNine
-                                        && five.isEnabled()) {
+                                } else if (twoOne && twoNine && five.isEnabled()) {
                                     five.performClick();
-                                } else if (twoFive && twoNine
-                                        && one.isEnabled()) {
+                                } else if (twoFive && twoNine && one.isEnabled()) {
                                     one.performClick();
                                 }
-                                // 3 5 7
-                                else if (twoThree && twoFive
-                                        && seven.isEnabled()) {
+                                //3 5 7
+                                else if (twoThree && twoFive && seven.isEnabled()) {
                                     seven.performClick();
-                                } else if (twoThree && twoSeven
-                                        && five.isEnabled()) {
+                                } else if (twoThree && twoSeven && five.isEnabled()) {
                                     five.performClick();
-                                } else if (twoFive && twoSeven
-                                        && three.isEnabled()) {
+                                } else if (twoFive && twoSeven && three.isEnabled()) {
                                     three.performClick();
                                 } else if (oneSeven && nine.isEnabled())
                                     nine.performClick();
@@ -2342,59 +2240,48 @@ public class OnePlayerActivity5 extends Activity implements
 
                                 eight.setEnabled(false);
                             }
-                            // nine is clicked
+                            //nine is clicked
                             if (oneNine && nine.isEnabled()) {
 
-                                // 1 2 3
+                                //1 2 3
                                 if (twoOne && twoTwo && three.isEnabled()) {
                                     three.performClick();
-                                } else if (twoOne && twoThree
-                                        && two.isEnabled()) {
+                                } else if (twoOne && twoThree && two.isEnabled()) {
                                     two.performClick();
-                                } else if (twoTwo && twoThree
-                                        && one.isEnabled()) {
+                                } else if (twoTwo && twoThree && one.isEnabled()) {
                                     one.performClick();
                                 }
                                 // 1 4 7
                                 else if (twoOne && twoFour && seven.isEnabled()) {
                                     seven.performClick();
-                                } else if (twoOne && twoSeven
-                                        && four.isEnabled()) {
+                                } else if (twoOne && twoSeven && four.isEnabled()) {
                                     four.performClick();
-                                } else if (twoFour && twoSeven
-                                        && one.isEnabled()) {
+                                } else if (twoFour && twoSeven && one.isEnabled()) {
                                     one.performClick();
                                 }
 
-                                // 4 5 6
+                                //4 5 6
                                 else if (twoFour && twoFive && six.isEnabled()) {
                                     six.performClick();
-                                } else if (twoFour && twoSix
-                                        && five.isEnabled()) {
+                                } else if (twoFour && twoSix && five.isEnabled()) {
                                     five.performClick();
-                                } else if (twoFive && twoSix
-                                        && four.isEnabled()) {
+                                } else if (twoFive && twoSix && four.isEnabled()) {
                                     four.performClick();
                                 }
-                                // 3 5 7
-                                else if (twoThree && twoFive
-                                        && seven.isEnabled()) {
+                                //3 5 7
+                                else if (twoThree && twoFive && seven.isEnabled()) {
                                     seven.performClick();
-                                } else if (twoThree && twoSeven
-                                        && five.isEnabled()) {
+                                } else if (twoThree && twoSeven && five.isEnabled()) {
                                     five.performClick();
-                                } else if (twoFive && twoSeven
-                                        && three.isEnabled()) {
+                                } else if (twoFive && twoSeven && three.isEnabled()) {
                                     three.performClick();
                                 }
-                                // 2 5 8
+                                //2 5 8
                                 else if (twoTwo && twoFive && eight.isEnabled()) {
                                     eight.performClick();
-                                } else if (twoTwo && twoEight
-                                        && five.isEnabled()) {
+                                } else if (twoTwo && twoEight && five.isEnabled()) {
                                     five.performClick();
-                                } else if (twoFive && twoEight
-                                        && two.isEnabled()) {
+                                } else if (twoFive && twoEight && two.isEnabled()) {
                                     two.performClick();
                                 } else if (oneThree && six.isEnabled())
                                     six.performClick();
@@ -2420,6 +2307,7 @@ public class OnePlayerActivity5 extends Activity implements
                                 nine.setEnabled(false);
                             }
 
+
                         }
                     });
                 } catch (Exception e) {
@@ -2430,4 +2318,11 @@ public class OnePlayerActivity5 extends Activity implements
         delaying.start();
     }
 
+    public int randomNumber() {
+
+        Random rn = new Random();
+        int randomNum = rn.nextInt((8) + 1);
+
+        return randomNum;
+    }
 }

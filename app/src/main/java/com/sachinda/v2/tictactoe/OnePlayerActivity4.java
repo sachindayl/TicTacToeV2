@@ -1,4 +1,4 @@
-package com.sachinda.myfirstapp;
+package com.sachinda.v2.tictactoe;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -15,7 +15,7 @@ import android.view.animation.Animation.AnimationListener;
 import android.widget.Button;
 import android.widget.ImageView;
 
-public class OnePlayerActivity6 extends Activity implements
+public class OnePlayerActivity4 extends Activity implements
         View.OnClickListener {
     // buttons
     Button one, two, three, four, five, six, seven, eight, nine;
@@ -69,16 +69,16 @@ public class OnePlayerActivity6 extends Activity implements
         } else if (style == 2) {
             setContentView(R.layout.activity_one_player_activity2);
         }
+        nextGame = new Intent(OnePlayerActivity4.this, OnePlayerActivity5.class);
+        end = new Intent(OnePlayerActivity4.this, BoardType.class);
 
-        nextGame = new Intent(OnePlayerActivity6.this, OnePlayerActivity.class);
-        end = new Intent(OnePlayerActivity6.this, BoardType.class);
+//		Context context = getApplicationContext();
+//		CharSequence text = "Activity 4";
+//		int duration = Toast.LENGTH_SHORT;
+//
+//		Toast toast = Toast.makeText(context, text, duration);
+//		toast.show();
 
-        // Context context = getApplicationContext();
-        // CharSequence text = "Activity 6";
-        // int duration = Toast.LENGTH_SHORT;
-        //
-        // Toast toast = Toast.makeText(context, text, duration);
-        // toast.show();
         counter = 0;
 
         one = (Button) findViewById(R.id.empty_button);
@@ -128,10 +128,10 @@ public class OnePlayerActivity6 extends Activity implements
             public void run() {
                 try {
                     Thread.sleep(1500);
-                    OnePlayerActivity6.this.runOnUiThread(new Runnable() {
+                    OnePlayerActivity4.this.runOnUiThread(new Runnable() {
                         public void run() {
                             alert = new AlertDialog.Builder(
-                                    OnePlayerActivity6.this);
+                                    OnePlayerActivity4.this);
                             alert.setMessage("Do you want to start a new game?")
                                     .setCancelable(false)
                                     .setPositiveButton(
@@ -219,7 +219,6 @@ public class OnePlayerActivity6 extends Activity implements
                                 four.setBackgroundResource(R.drawable.bscirclewon);
                                 seven.setBackgroundResource(R.drawable.bscirclewon);
                             }
-
 
                             disableAllButtons();
 
@@ -1434,9 +1433,15 @@ public class OnePlayerActivity6 extends Activity implements
 
                             } else {
                                 draw.startAnimation(itsdraw);
-
-                                disableAllButtons();
-
+                                one.setEnabled(false);
+                                two.setEnabled(false);
+                                three.setEnabled(false);
+                                four.setEnabled(false);
+                                five.setEnabled(false);
+                                six.setEnabled(false);
+                                seven.setEnabled(false);
+                                eight.setEnabled(false);
+                                nine.setEnabled(false);
                                 delayDialog();
                             }
 
@@ -1535,7 +1540,7 @@ public class OnePlayerActivity6 extends Activity implements
                             @Override
                             public void onClick(DialogInterface dialog,
                                                 int which) {
-                                OnePlayerActivity6.this.finish();
+                                OnePlayerActivity4.this.finish();
                                 startActivity(end);
 
                             }
@@ -1696,6 +1701,18 @@ public class OnePlayerActivity6 extends Activity implements
 
         });
 
+    }
+
+    public void disableAllButtons() {
+        one.setEnabled(false);
+        two.setEnabled(false);
+        three.setEnabled(false);
+        four.setEnabled(false);
+        five.setEnabled(false);
+        six.setEnabled(false);
+        seven.setEnabled(false);
+        eight.setEnabled(false);
+        nine.setEnabled(false);
     }
 
     private void computerMove() {
@@ -2381,18 +2398,6 @@ public class OnePlayerActivity6 extends Activity implements
 
     }
 
-    public void disableAllButtons() {
-        one.setEnabled(false);
-        two.setEnabled(false);
-        three.setEnabled(false);
-        four.setEnabled(false);
-        five.setEnabled(false);
-        six.setEnabled(false);
-        seven.setEnabled(false);
-        eight.setEnabled(false);
-        nine.setEnabled(false);
-    }
-
     public void delayedMove(final Button buton) {
         Handler handlr = new Handler();
         Runnable mMyRunnable = new Runnable() {
@@ -2406,4 +2411,3 @@ public class OnePlayerActivity6 extends Activity implements
     }
 
 }
-

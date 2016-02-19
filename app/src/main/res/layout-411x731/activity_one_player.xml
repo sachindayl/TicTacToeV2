@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/empty_button"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_marginLeft="78dp"
+        android:layout_marginStart="78dp"
+        android:layout_marginTop="310dp"
+        android:background="@drawable/custom_empty_button" />
+
+
+    <Button
+        android:id="@+id/empty_button2"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_marginLeft="163dp"
+        android:layout_marginStart="163dp"
+        android:layout_marginTop="310dp"
+        android:background="@drawable/custom_empty_button2" />
+
+    <Button
+        android:id="@+id/empty_button3"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_marginLeft="248dp"
+        android:layout_marginStart="248dp"
+        android:layout_marginTop="310dp"
+        android:background="@drawable/custom_empty_button" />
+
+    <Button
+        android:id="@+id/empty_button4"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_marginLeft="78dp"
+        android:layout_marginStart="78dp"
+        android:layout_marginTop="395dp"
+        android:background="@drawable/custom_empty_button2" />
+
+    <Button
+        android:id="@+id/empty_button5"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_marginLeft="163dp"
+        android:layout_marginStart="163dp"
+        android:layout_marginTop="395dp"
+        android:background="@drawable/custom_empty_button" />
+
+    <Button
+        android:id="@+id/empty_button6"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_marginLeft="248dp"
+        android:layout_marginStart="248dp"
+        android:layout_marginTop="395dp"
+        android:background="@drawable/custom_empty_button2" />
+
+    <Button
+        android:id="@+id/empty_button7"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_marginLeft="78dp"
+        android:layout_marginStart="78dp"
+        android:layout_marginTop="480dp"
+        android:background="@drawable/custom_empty_button" />
+
+    <Button
+        android:id="@+id/empty_button8"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_marginLeft="163dp"
+        android:layout_marginStart="163dp"
+        android:layout_marginTop="480dp"
+        android:background="@drawable/custom_empty_button2" />
+
+    <Button
+        android:id="@+id/empty_button9"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_marginLeft="248dp"
+        android:layout_marginStart="248dp"
+        android:layout_marginTop="480dp"
+        android:background="@drawable/custom_empty_button" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/start_the_game"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@string/game_start"
+            android:src="@drawable/startthematch" />
+
+        <ImageView
+            android:id="@+id/your_turn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@string/user_turn"
+            android:src="@drawable/yourturn"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/comp_turn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@string/computer_turn"
+            android:src="@drawable/computersturn"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/you_win"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:contentDescription="@string/you_winner"
+            android:src="@drawable/youwin"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/computer_wins"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:contentDescription="@string/computer_winner"
+            android:src="@drawable/computerwins"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/its_draw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:contentDescription="@string/its_a_draw"
+            android:src="@drawable/draw"
+            android:visibility="invisible" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

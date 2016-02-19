@@ -1,4 +1,4 @@
-package com.sachinda.myfirstapp;
+package com.sachinda.v2.tictactoe;
 
 import android.app.Application;
 
