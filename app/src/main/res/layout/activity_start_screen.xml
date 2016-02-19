@@ -1,0 +1,36 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sachinda.myfirstapp.SplashScreen"
+    android:background="@color/grey"
+    tools:ignore="MergeRootFrame">
+
+    <ImageView
+        android:contentDescription="@string/main_image"
+        android:src="@drawable/mainpage"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scaleType="fitXY" />
+
+    <Button
+        android:id="@+id/settings_button"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="44dp"
+        android:background="@drawable/customsettingsbutton" />
+
+    <Button
+        android:id="@+id/start_button"
+        android:layout_width="100dp"
+        android:layout_height="24dp"
+        android:layout_above="@+id/settings_button"
+        android:layout_alignLeft="@+id/settings_button"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/custombutton" />
+
+</RelativeLayout>

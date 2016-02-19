@@ -1,0 +1,36 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sachinda.myfirstapp.SplashScreen"
+    android:background="@color/grey"
+    tools:ignore="MergeRootFrame">
+
+    <ImageView
+        android:contentDescription="@string/main_image"
+        android:src="@drawable/mainpage"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scaleType="fitXY" />
+
+    <Button
+        android:id="@+id/fourx4riptide_button"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="44dp"
+        android:background="@drawable/four_x_four_riptide" />
+
+    <Button
+        android:id="@+id/threex3riptide_button"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_above="@+id/fourx4riptide_button"
+        android:layout_alignLeft="@+id/fourx4riptide_button"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/three_x_three_riptide" />
+
+</RelativeLayout>

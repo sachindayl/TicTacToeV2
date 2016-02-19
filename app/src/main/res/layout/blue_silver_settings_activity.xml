@@ -1,0 +1,44 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/softpink"
+    android:orientation="vertical">
+
+    <RadioGroup
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/select_the_theme"
+        android:layout_marginTop="24dp"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/radio_redblk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:textColor="@color/red"
+            android:text="@string/redblack" />
+
+        <RadioButton
+            android:id="@+id/radio_bluesilvr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onRadioButtonClicked"
+            android:textColor="@color/skyblue"
+            android:text="@string/bluesilver" />
+    </RadioGroup>
+
+    <ImageView
+        android:id="@+id/select_the_theme"
+        android:layout_width="175dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="39dp"
+        android:contentDescription="@string/themeselect"
+        android:scaleType="fitXY"
+        android:src="@drawable/bsselecttheme" />
+
+</RelativeLayout>

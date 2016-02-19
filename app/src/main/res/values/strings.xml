@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="action_search">Search</string>
+    <string name="action_settings">Settings</string>
+    <string name="app_name">Tic Tac Toe</string>
+    <string name="button_send">Send</string>
+    <string name="bluesilver">Fairy Tale</string>
+    <string name="comp">Computer\'s Turn</string>
+    <string name="computer_turn">Computer\'s Turn</string>
+    <string name="computer_winner">Computer Wins</string>
+    <string name="its_a_draw">It\'s a draw!</string>
+    <string name="edit_message">Enter a Message.</string>
+    <string name="game_board">Game Board</string>
+    <string name="game_start">Start the game!</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="loading"></string>
+    <string name="main_image">Main Page Image</string>
+    <string name="player_one_turn">Player one turn</string>
+    <string name="player_two_turn">Player two turn</string>
+    <string name="player_one_winner">Player one wins!</string>
+    <string name="player_two_winner">Player two wins!</string>
+    <string name="redblack">Rip Tide</string>
+    <string name="splash_screen">Splash Screen</string>
+    <string name="start_game">Game</string>
+    <string name="settings">Settings</string>
+    <string name="this_is_settings">You came to the settings page</string>
+    <string name="themeselect">Select Theme</string>
+    <string name="title_activity_display_message">My Message</string>
+    <string name="title_activity_main">Main Activity</string>
+    <string name="title_activity_settings_page">Settings</string>
+    <string name="title_activity_settings">Settings</string>
+    <string name="title_activity_one_player">OnePlayerActivity</string>
+    <string name="user_turn">Your Turn</string>
+    <string name="you_winner">You Win!</string>
+
+    <color name="black">#000000</color>
+    <color name="red">#aa0000</color>
+
+    <string name="title_activity_one_player_activity2">OnePlayerActivity2</string>
+    <string name="title_activity_one_player_activity3">OnePlayerActivity3</string>
+    <string name="title_activity_one_player_activity4">OnePlayerActivity4</string>
+    <string name="title_activity_one_player_activityfive">OnePlayerActivity5</string>
+    <string name="title_activity_one_player_activity6">OnePlayerActivity6</string>
+    <string name="title_activity_multiplayer">Multiplayer</string>
+    <string name="title_activity_four_in_to_four_two_player">FourInToFourTwoPlayer</string>
+    <string name="title_activity_board_type">BoardType</string>
+
+</resources>
