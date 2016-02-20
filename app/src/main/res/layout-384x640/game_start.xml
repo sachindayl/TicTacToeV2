@@ -1,91 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFCC99">
+    android:background="@color/black">
 
     <Button
         android:id="@+id/empty_button"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginLeft="75dp"
-        android:layout_marginStart="75dp"
-        android:background="@drawable/bluesquare" />
+        android:layout_marginTop="250dp"
+        android:layout_marginLeft="79.5dp"
+        android:layout_marginStart="79.5dp"
+        android:background="@drawable/custom_empty_button" />
 
 
     <Button
         android:id="@+id/empty_button2"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginStart="150dp"
-        android:background="@drawable/whitesquare"/>
+        android:layout_marginTop="250dp"
+        android:layout_marginLeft="154.5dp"
+        android:layout_marginStart="154.5dp"
+        android:background="@drawable/custom_empty_button2"
+        android:gravity="center" />
 
     <Button
         android:id="@+id/empty_button3"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_marginTop="200dp"
-        android:layout_marginLeft="225dp"
-        android:layout_marginStart="225dp"
-        android:background="@drawable/bluesquare" />
+        android:layout_marginTop="250dp"
+        android:layout_marginLeft="229.5dp"
+        android:layout_marginStart="229.5dp"
+        android:background="@drawable/custom_empty_button" />
 
     <Button
         android:id="@+id/empty_button4"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_marginTop="275dp"
-        android:layout_marginLeft="75dp"
-        android:layout_marginStart="75dp"
-        android:background="@drawable/whitesquare" />
+        android:layout_marginTop="325dp"
+        android:layout_marginLeft="79.5dp"
+        android:layout_marginStart="79.5dp"
+        android:background="@drawable/custom_empty_button2" />
 
     <Button
         android:id="@+id/empty_button5"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_marginTop="275dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginStart="150dp"
-        android:background="@drawable/bluesquare" />
+        android:layout_marginTop="325dp"
+        android:layout_marginLeft="154.5dp"
+        android:layout_marginStart="154.5dp"
+        android:background="@drawable/custom_empty_button" />
 
     <Button
         android:id="@+id/empty_button6"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_marginTop="275dp"
-        android:layout_marginLeft="225dp"
-        android:layout_marginStart="225dp"
-        android:background="@drawable/whitesquare" />
+        android:layout_marginTop="325dp"
+        android:layout_marginLeft="229.5dp"
+        android:layout_marginStart="229.5dp"
+        android:background="@drawable/custom_empty_button2" />
 
     <Button
         android:id="@+id/empty_button7"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_marginTop="350dp"
-        android:layout_marginLeft="75dp"
-        android:layout_marginStart="75dp"
-        android:background="@drawable/bluesquare" />
+        android:layout_marginTop="400dp"
+        android:layout_marginLeft="79.5dp"
+        android:layout_marginStart="79.5dp"
+        android:background="@drawable/custom_empty_button" />
 
     <Button
         android:id="@+id/empty_button8"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_marginTop="350dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginStart="150dp"
-        android:background="@drawable/whitesquare" />
+        android:layout_marginTop="400dp"
+        android:layout_marginLeft="154.5dp"
+        android:layout_marginStart="154.5dp"
+        android:background="@drawable/custom_empty_button2" />
 
     <Button
         android:id="@+id/empty_button9"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_marginTop="350dp"
-        android:layout_marginLeft="225dp"
-        android:layout_marginStart="225dp"
-        android:background="@drawable/bluesquare" />
+        android:layout_marginTop="400dp"
+        android:layout_marginLeft="229.5dp"
+        android:layout_marginStart="229.5dp"
+        android:background="@drawable/custom_empty_button" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -98,7 +100,7 @@
             android:layout_width="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_height="wrap_content"
-            android:src="@drawable/bsstartthematch" />
+            android:src="@drawable/startthematch" />
 
         <ImageView
             android:id="@+id/player_one"
@@ -106,7 +108,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/bsplayer1"
+            android:src="@drawable/player1"
             android:visibility="invisible" />
 
         <ImageView
@@ -115,7 +117,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/bsplayer2"
+            android:src="@drawable/player2"
             android:visibility="invisible" />
 
         <ImageView
@@ -125,7 +127,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/bsplayer1winner"
+            android:src="@drawable/player1winner"
             android:visibility="invisible" />
 
         <ImageView
@@ -133,9 +135,9 @@
             android:contentDescription="@string/player_two_winner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_centerInParent="true"
-            android:src="@drawable/bsplayer2winner"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/player2winner"
             android:visibility="invisible" />
 
         <ImageView
@@ -145,7 +147,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerInParent="true"
-            android:src="@drawable/bsdraw"
+            android:src="@drawable/draw"
             android:visibility="invisible" />
 
     </RelativeLayout>
