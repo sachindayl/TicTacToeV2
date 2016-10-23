@@ -17,8 +17,8 @@ public class BoardType extends Activity {
     public static final String PREF_FILE_NAME = "PrefFile";
     AlertDialog.Builder alert;
     AlertDialog dialog;
-    Intent threeX3OneP, threeX3TwoP, fourX4TwoP, startPage;
-    Button threeIntoThreeBtn, fourIntoFourBtn;
+    Intent threeX3OneP, threeX3TwoP, startPage;
+    Button threeIntoThreeBtn;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,17 +83,6 @@ public class BoardType extends Activity {
             }
         });
 
-        fourIntoFourBtn = (Button) findViewById(R.id.fourx4riptide_button);
-        fourIntoFourBtn.setOnClickListener(new OnClickListener() {
-            public void onClick(View v) {
-                Log.i("clicks", "You clicked settings button");
-                fourX4TwoP = new Intent(BoardType.this, FourInToFourTwoPlayer.class);
-                finish();
-                startActivity(fourX4TwoP);
-
-
-            }
-        });
 
     }
 

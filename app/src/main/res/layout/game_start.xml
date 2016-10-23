@@ -3,8 +3,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/black">
 
     <Button
         android:id="@+id/empty_button"
@@ -95,57 +95,57 @@
 
         <ImageView
             android:id="@+id/start_the_game"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:contentDescription="@string/game_start"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content"
             android:src="@drawable/startthematch" />
 
         <ImageView
-            android:id="@+id/your_turn"
+            android:id="@+id/player_one"
+            android:contentDescription="@string/player_one_turn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:contentDescription="@string/user_turn"
-            android:src="@drawable/yourturn"
+            android:src="@drawable/player1"
             android:visibility="invisible" />
 
         <ImageView
-            android:id="@+id/comp_turn"
+            android:id="@+id/player_two"
+            android:contentDescription="@string/player_two_turn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:contentDescription="@string/computer_turn"
-            android:src="@drawable/computersturn"
+            android:src="@drawable/player2"
             android:visibility="invisible" />
 
         <ImageView
-            android:id="@+id/you_win"
+            android:id="@+id/player_one_wins"
+            android:contentDescription="@string/player_one_winner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_centerInParent="true"
-            android:contentDescription="@string/you_winner"
-            android:src="@drawable/youwin"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/player1winner"
             android:visibility="invisible" />
 
         <ImageView
-            android:id="@+id/computer_wins"
+            android:id="@+id/player_two_wins"
+            android:contentDescription="@string/player_two_winner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_centerInParent="true"
-            android:contentDescription="@string/computer_winner"
-            android:src="@drawable/computerwins"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/player2winner"
             android:visibility="invisible" />
 
         <ImageView
             android:id="@+id/its_draw"
+            android:contentDescription="@string/its_a_draw"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerInParent="true"
-            android:contentDescription="@string/its_a_draw"
             android:src="@drawable/draw"
             android:visibility="invisible" />
 

@@ -112,14 +112,6 @@
             android:name="com.sachinda.v2.tictactoe.Multiplayer"
             android:label="@string/title_activity_multiplayer"></activity>
         <activity
-            android:name="com.sachinda.v2.tictactoe.FourInToFourTwoPlayer"
-            android:label="@string/title_activity_four_in_to_four_two_player"
-            android:parentActivityName="com.sachinda.v2.tictactoe.StartScreen">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.sachinda.v2.tictactoe.StartScreen" />
-        </activity>
-        <activity
             android:name="com.sachinda.v2.tictactoe.BoardType"
             android:label="@string/title_activity_board_type"
             android:parentActivityName="com.sachinda.v2.tictactoe.StartScreen">
