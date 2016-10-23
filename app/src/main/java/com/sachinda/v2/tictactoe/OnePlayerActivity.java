@@ -5,7 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -15,13 +15,14 @@ import android.view.animation.Animation.AnimationListener;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 import java.util.Random;
 
 public class OnePlayerActivity extends Activity implements View.OnClickListener {
     // buttons
     Button one, two, three, four, five, six, seven, eight, nine;
-
-    int enabledKeys;
 
     boolean oneOne = false, oneTwo = false, oneThree = false, oneFour = false,
             oneFive = false, oneSix = false, oneSeven = false,
@@ -51,9 +52,8 @@ public class OnePlayerActivity extends Activity implements View.OnClickListener 
     AlertDialog dialog;
     Intent nextGame, end;
     Thread th;
-    Handler compMove = new Handler();
-
-    // private Runnable compMoveRunner;
+    GlobalVariable globalVariable;
+    Tracker mTracker;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +64,11 @@ public class OnePlayerActivity extends Activity implements View.OnClickListener 
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        globalVariable = (GlobalVariable) getApplication();
+        mTracker = globalVariable.getDefaultTracker();
+        Log.i("TAG", "Setting screen name: OnePlayerActivity");
+        mTracker.setScreenName("OnePlayerActivity");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
 
         int style = ((GlobalVariable) this.getApplication()).getStyle();
         if (style == 1) {
@@ -74,13 +79,6 @@ public class OnePlayerActivity extends Activity implements View.OnClickListener 
 
         nextGame = new Intent(OnePlayerActivity.this, OnePlayerActivity2.class);
         end = new Intent(OnePlayerActivity.this, BoardType.class);
-
-//		Context context = getApplicationContext();
-//		CharSequence text = "Activity 1";
-//		int duration = Toast.LENGTH_SHORT;
-//
-//		Toast toast = Toast.makeText(context, text, duration);
-//		toast.show();
 
         counter = 0;
 
@@ -2326,3 +2324,4 @@ public class OnePlayerActivity extends Activity implements View.OnClickListener 
         return randomNum;
     }
 }
+

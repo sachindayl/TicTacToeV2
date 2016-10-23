@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -15,13 +16,14 @@ import android.view.animation.Animation.AnimationListener;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 public class OnePlayerActivity4 extends Activity implements
         View.OnClickListener {
     // buttons
     Button one, two, three, four, five, six, seven, eight, nine;
     Button[] buttons = {one, two, three, four, five, six, seven, eight, nine};
-
-    int enabledKeys;
 
     boolean oneOne = false, oneTwo = false, oneThree = false, oneFour = false,
             oneFive = false, oneSix = false, oneSeven = false,
@@ -51,6 +53,8 @@ public class OnePlayerActivity4 extends Activity implements
     AlertDialog dialog;
     Intent nextGame, end;
     Thread th;
+    GlobalVariable globalVariable;
+    Tracker mTracker;
 
     // private Runnable compMoveRunner;
 
@@ -63,6 +67,13 @@ public class OnePlayerActivity4 extends Activity implements
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        //Adding Google Analytics
+        globalVariable = (GlobalVariable) getApplication();
+        mTracker = globalVariable.getDefaultTracker();
+        Log.i("TAG", "Setting screen name: OnePlayerActivity4");
+        mTracker.setScreenName("OnePlayerActivity4");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+
         int style = ((GlobalVariable) this.getApplication()).getStyle();
         if (style == 1) {
             setContentView(R.layout.activity_one_player);
@@ -72,12 +83,6 @@ public class OnePlayerActivity4 extends Activity implements
         nextGame = new Intent(OnePlayerActivity4.this, OnePlayerActivity5.class);
         end = new Intent(OnePlayerActivity4.this, BoardType.class);
 
-//		Context context = getApplicationContext();
-//		CharSequence text = "Activity 4";
-//		int duration = Toast.LENGTH_SHORT;
-//
-//		Toast toast = Toast.makeText(context, text, duration);
-//		toast.show();
 
         counter = 0;
 

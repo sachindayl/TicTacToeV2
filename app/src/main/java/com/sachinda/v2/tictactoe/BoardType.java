@@ -13,12 +13,17 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 public class BoardType extends Activity {
     public static final String PREF_FILE_NAME = "PrefFile";
     AlertDialog.Builder alert;
     AlertDialog dialog;
     Intent threeX3OneP, threeX3TwoP, startPage;
     Button threeIntoThreeBtn;
+    GlobalVariable globalVariable;
+    Tracker mTracker;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +33,13 @@ public class BoardType extends Activity {
         // Remove notification bar
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        //Adding Google Analytics
+        globalVariable = (GlobalVariable) getApplication();
+        mTracker = globalVariable.getDefaultTracker();
+        Log.i("TAG", "Setting screen name: BoardType");
+        mTracker.setScreenName("BoardType");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
 
         // Restore preferences
         SharedPreferences setPref = getSharedPreferences(PREF_FILE_NAME, 0);

@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -14,6 +15,9 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.Button;
 import android.widget.ImageView;
+
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 public class OnePlayerActivity6 extends Activity implements
         View.OnClickListener {
@@ -51,6 +55,8 @@ public class OnePlayerActivity6 extends Activity implements
     AlertDialog dialog;
     Intent nextGame, end;
     Thread th;
+    GlobalVariable globalVariable;
+    Tracker mTracker;
 
     // private Runnable compMoveRunner;
 
@@ -63,6 +69,13 @@ public class OnePlayerActivity6 extends Activity implements
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        //Adding Google Analytics
+        globalVariable = (GlobalVariable) getApplication();
+        mTracker = globalVariable.getDefaultTracker();
+        Log.i("TAG", "Setting screen name: OnePlayerActivity6");
+        mTracker.setScreenName("OnePlayerActivity6");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+
         int style = ((GlobalVariable) this.getApplication()).getStyle();
         if (style == 1) {
             setContentView(R.layout.activity_one_player);
@@ -73,12 +86,6 @@ public class OnePlayerActivity6 extends Activity implements
         nextGame = new Intent(OnePlayerActivity6.this, OnePlayerActivity.class);
         end = new Intent(OnePlayerActivity6.this, BoardType.class);
 
-        // Context context = getApplicationContext();
-        // CharSequence text = "Activity 6";
-        // int duration = Toast.LENGTH_SHORT;
-        //
-        // Toast toast = Toast.makeText(context, text, duration);
-        // toast.show();
         counter = 0;
 
         one = (Button) findViewById(R.id.empty_button);

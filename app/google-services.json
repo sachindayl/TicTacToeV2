@@ -1,0 +1,38 @@
+{
+  "project_info": {
+    "project_number": "10258456951",
+    "project_id": "firebase-tictactoev2"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:10258456951:android:eae7b62937e62ac7",
+        "android_client_info": {
+          "package_name": "com.sachinda.v2.tictactoe"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUnQzI97-_Wdj5VTi9kvmfAHIhByX95tw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-86158813-2"
+          }
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

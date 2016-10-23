@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -15,13 +16,13 @@ import android.view.animation.Animation.AnimationListener;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 public class OnePlayerActivity2 extends Activity implements
         View.OnClickListener {
     // buttons
     Button one, two, three, four, five, six, seven, eight, nine;
-    Button[] buttons = {one, two, three, four, five, six, seven, eight, nine};
-
-    int enabledKeys;
 
     boolean oneOne = false, oneTwo = false, oneThree = false, oneFour = false,
             oneFive = false, oneSix = false, oneSeven = false,
@@ -50,8 +51,10 @@ public class OnePlayerActivity2 extends Activity implements
     AlertDialog.Builder alert;
     AlertDialog dialog;
     Intent nextGame, end;
-    Thread th, delays;
-    int timeleft = 1000;
+    Thread th;
+
+    GlobalVariable globalVariable;
+    Tracker mTracker;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +64,13 @@ public class OnePlayerActivity2 extends Activity implements
         // Remove notification bar
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        //Adding Google Analytics
+        globalVariable = (GlobalVariable) getApplication();
+        mTracker = globalVariable.getDefaultTracker();
+        Log.i("TAG", "Setting screen name: OnePlayerActivity2");
+        mTracker.setScreenName("OnePlayerActivity2");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
 
 
         int style = ((GlobalVariable) this.getApplication()).getStyle();
@@ -73,12 +83,6 @@ public class OnePlayerActivity2 extends Activity implements
         nextGame = new Intent(OnePlayerActivity2.this, OnePlayerActivity3.class);
         end = new Intent(OnePlayerActivity2.this, BoardType.class);
 
-//		Context context = getApplicationContext();
-//		CharSequence text = "Activity 2";
-//		int duration = Toast.LENGTH_SHORT;
-//
-//		Toast toast = Toast.makeText(context, text, duration);
-//		toast.show();
 
         counter = 0;
 

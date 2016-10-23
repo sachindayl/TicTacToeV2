@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -13,6 +14,9 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.Button;
 import android.widget.ImageView;
+
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 public class TwoPlayerActivity extends Activity implements View.OnClickListener {
 
@@ -36,6 +40,8 @@ public class TwoPlayerActivity extends Activity implements View.OnClickListener 
     AlertDialog dialog;
     Intent intent, end;
     Thread th;
+    GlobalVariable globalVariable;
+    Tracker mTracker;
 
     ImageView startGame, p1, p2, p1Wins, p2Wins, draw;
 
@@ -50,11 +56,18 @@ public class TwoPlayerActivity extends Activity implements View.OnClickListener 
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        //Adding Google Analytics
+        globalVariable = (GlobalVariable) getApplication();
+        mTracker = globalVariable.getDefaultTracker();
+        Log.i("TAG", "Setting screen name: TwoPlayerActivity");
+        mTracker.setScreenName("TwoPlayerActivity");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+
         int style = ((GlobalVariable) this.getApplication()).getStyle();
         if (style == 1) {
-            setContentView(R.layout.game_start);
+            setContentView(R.layout.activity_one_player);
         } else if (style == 2) {
-            setContentView(R.layout.activity_one_player_activity3);
+            setContentView(R.layout.activity_one_player_activity2);
         }
 
         intent = getIntent();

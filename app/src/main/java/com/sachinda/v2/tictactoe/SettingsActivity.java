@@ -10,12 +10,17 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.RadioButton;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 public class SettingsActivity extends Activity {
 
     public static final String PREF_FILE_NAME = "PrefFile";
     Intent back, settings;
 
     RadioButton radio1, radio2;
+    GlobalVariable globalVariable;
+    Tracker mTracker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +31,12 @@ public class SettingsActivity extends Activity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         // set content view AFTER ABOVE sequence (to avoid crash)
-        Log.i("arrival", "You came to settings page");
+        //Adding Google Analytics
+        globalVariable = (GlobalVariable) getApplication();
+        mTracker = globalVariable.getDefaultTracker();
+        Log.i("TAG", "Setting screen name: SettingsActivity");
+        mTracker.setScreenName("SettingsActivity");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
 
         radio1 = (RadioButton) findViewById(R.id.radio_redblk);
         radio2 = (RadioButton) findViewById(R.id.radio_bluesilvr);
